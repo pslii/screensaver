@@ -44,6 +44,8 @@ export class CCSource extends PhotoSource {
     photos = photos || [];
     for (const photo of photos) {
       photo.asp = '1.78';
+      photo.width = 1280;
+      photo.height = 720;
     }
     return photos;
   }

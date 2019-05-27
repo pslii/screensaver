@@ -68,6 +68,12 @@ export class SSPhoto {
   /** The person that took the photo */
   protected readonly _photographer: string;
 
+  /** Photo width in pixels */
+  protected readonly _width: number;
+
+  /** Photo height in pixels */
+  protected readonly _height: number;
+
   /** The aspect ratio */
   protected readonly _aspectRatio: number;
 
@@ -91,6 +97,8 @@ export class SSPhoto {
     this._url = source.url;
     this._photographer = source.author ? source.author : '';
     this._aspectRatio = parseFloat(source.asp);
+    this._width = source.width;
+    this._height = source.height;
     this._ex = source.ex;
     this._point = source.point;
     this._type = sourceType;
@@ -147,6 +155,20 @@ export class SSPhoto {
    */
   public getAspectRatio() {
     return this._aspectRatio;
+  }
+
+  /**
+   * Get photo width
+   */
+  public getWidth() {
+    return this._width;
+  }
+
+  /**
+   * Get photo height
+   */
+  public getHeight() {
+    return this._height;
   }
 
   /**

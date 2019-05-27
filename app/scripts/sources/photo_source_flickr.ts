@@ -63,13 +63,12 @@ export class FlickrSource extends PhotoSource {
             width = parseInt(photo.width_k, 10);
             height = parseInt(photo.height_k, 10);
           }
-          const asp = width / height;
           let pt = '';
           if (photo.latitude && photo.longitude) {
             pt = PhotoSource.createPoint(photo.latitude, photo.longitude);
           }
           PhotoSource.addPhoto(photos, url,
-              photo.ownername, asp, photo.owner, pt);
+              photo.ownername, width, height, photo.owner, pt);
         }
       }
     }

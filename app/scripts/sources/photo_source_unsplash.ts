@@ -109,7 +109,7 @@ export class UnsplashSource extends PhotoSource {
         const ex = {
           url: photo.links.html,
         };
-        PhotoSource.addPhoto(photos, url, photog, asp, ex);
+        PhotoSource.addPhoto(photos, url, photog, width, height, ex);
       }
     }
 

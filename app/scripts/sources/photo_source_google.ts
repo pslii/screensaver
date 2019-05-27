@@ -792,6 +792,8 @@ export class GoogleSource extends PhotoSource {
 
         return {
           url: `${mediaItem.baseUrl}=w${width}-h${height}`,
+          width: width,
+          height: height,
           asp: (width / height).toPrecision(3),
           author: albumName,
           ex: {
@@ -819,8 +821,7 @@ export class GoogleSource extends PhotoSource {
     for (const mediaItem of mediaItems) {
       const photo = this.processPhoto(mediaItem, albumName);
       if (photo) {
-        const asp = parseFloat(photo.asp);
-        this.addPhoto(photos, photo.url, photo.author, asp, photo.ex, photo.point);
+        this.addPhoto(photos, photo.url, photo.author, photo.width, photo.height, photo.ex, photo.point);
       }
     }
     return photos;

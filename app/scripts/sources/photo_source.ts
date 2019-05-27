@@ -39,6 +39,10 @@ export interface IPhoto {
   url: string;
   /** The photographer */
   author: string;
+  /** Image width in pixels */
+  width: number;
+  /** Image height in pixels */
+  height: number;
   /** Aspect ratio */
   asp: string;
   /** Extra information about the photo */
@@ -68,11 +72,14 @@ export abstract class PhotoSource {
    * @param ex - Additional information about the photo
    * @param point - An optional geolocation
    */
-  public static addPhoto(photos: IPhoto[], url: string, author: string, asp: number, ex: any, point: string = '') {
+  public static addPhoto(photos: IPhoto[], url: string, author: string, width: number, height: number,
+                         ex: any, point: string = '') {
     const photo: IPhoto = {
       url: url,
       author: author,
-      asp: asp.toPrecision(3),
+      width: width,
+      height: height,
+      asp: (width / height).toPrecision(3),
     };
     if (ex) {
       photo.ex = ex;
