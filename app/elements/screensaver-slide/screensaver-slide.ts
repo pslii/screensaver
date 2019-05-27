@@ -380,7 +380,7 @@ export class ScreensaverSlideElement
         this.renderFrame();
         break;
       case VIEW_TYPE.COLLAGE:
-        this.renderFrame();
+        this.renderCollage();
         break;
       default:
         break;
@@ -477,6 +477,54 @@ export class ScreensaverSlideElement
       // limit location width if we also have an author
       locationStyle.maxWidth = maxWidth - 1.1 + 'vw';
     }
+  }
+
+  /** Rnder collage view type */
+  protected renderCollage() {
+    if (!this.photo) {
+      return;
+    }
+
+    const photo = this.photo;
+    const ar = photo.getAspectRatio();
+    const photo_height = photo.getHeight();
+    const image = this.ironImage;
+    const imageStyle = image.style;
+    const img: HTMLImageElement = image.$.img as HTMLImageElement;
+    const imgStyle = img.style;
+
+    // scale to screen size
+    const border = screen.height * 0.005;
+    const padding = screen.height * 0.025;
+
+    // scale photo down if it's > 85% of screen height/width
+    const height = Math.min((screen.width * 0.85 - padding * 2 - border * 2) / ar,
+                              screen.height * 0.85 - padding * 2 - border * 2,
+                              photo_height - padding * 2 - border * 2);
+    const width = height * ar;
+
+    // size with the frame
+    const frWidth = width + border * 2;
+    const frHeight = height + border * 2;
+
+    // set image size
+    image.height = height;
+    image.width = width;
+    imageStyle.border = 0.5 + 'vh ridge WhiteSmoke';
+    imageStyle.boxShadow = '1.5vh 1.5vh 1.5vh rgba(0,0,0,.7)';
+
+    // set random position
+    imageStyle.top = Math.floor((screen.height - frHeight) * (Math.random() * 0.9 + 0.05)) + 'px';
+    imageStyle.left = Math.floor((screen.width - frWidth) * (Math.random() * 0.9 + 0.05)) + 'px';
+
+    // set random image rotation between -15 and +15 degrees
+    const rotation = (Math.random() - 0.5) * 15;
+    imageStyle.transform = 'rotate(' + rotation.toPrecision(3) + 'deg)'
+
+    imgStyle.height = height + 'px';
+    imgStyle.width = width + 'px';
+    imgStyle.top = screen.height / 2 + 'px';
+    imgStyle.left = screen.width / 2 + 'px';
   }
 
   /** Render frame view type */
