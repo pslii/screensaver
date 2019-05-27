@@ -80,6 +80,7 @@ export const enum VIEW_TYPE {
   ZOOM,
   FRAME,
   FULL,
+  COLLAGE,
   RANDOM,
 }
 

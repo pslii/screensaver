@@ -217,6 +217,9 @@
   "menu_24_hour": {
     "message": "24 hour"
   },
+  "menu_collage": {
+    "message": "Collage"
+  },
   "menu_error": {
     "message": "View last error"
   },

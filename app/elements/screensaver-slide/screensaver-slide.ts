@@ -379,6 +379,9 @@ export class ScreensaverSlideElement
       case VIEW_TYPE.FRAME:
         this.renderFrame();
         break;
+      case VIEW_TYPE.COLLAGE:
+        this.renderFrame();
+        break;
       default:
         break;
     }

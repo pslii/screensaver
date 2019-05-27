@@ -144,6 +144,7 @@ export class SettingsPageElement extends BasePageElement {
     ChromeLocale.localize('menu_zoom'),
     ChromeLocale.localize('menu_frame'),
     ChromeLocale.localize('menu_full'),
+    ChromeLocale.localize('menu_collage'),
     ChromeLocale.localize('menu_random'),
   ];
 
